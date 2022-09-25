@@ -1,23 +1,32 @@
 package com.udemy.sharebook.user;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
-public class User {
+@Entity
+public class UserInfo {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     public String email;
 
     @Size(min = 2, max = 25, message = "le nom doit faire entre 2 et 25 caractères")
-    public String firstName;
+    private String firstName;
 
     @Size(min = 2, max = 25, message = "le nom doit faire entre 2 et 25 caractères")
-    public String lastName;
+    private String lastName;
 
-    public String password;
+    private String password;
 
-    public User() {
+    public UserInfo() {
     }
 
-    public User(String email, String firstName, String lastName) {
+    public UserInfo(String email, String firstName, String lastName) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -27,7 +36,7 @@ public class User {
         return email;
     }
 
-    public User setEmail(String email) {
+    public UserInfo setEmail(String email) {
         this.email = email;
         return this;
     }
@@ -36,7 +45,7 @@ public class User {
         return firstName;
     }
 
-    public User setFirstName(String firstName) {
+    public UserInfo setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
@@ -45,7 +54,7 @@ public class User {
         return lastName;
     }
 
-    public User setLastName(String lastName) {
+    public UserInfo setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
@@ -54,9 +63,17 @@ public class User {
         return password;
     }
 
-    public User setPassword(String password) {
+    public UserInfo setPassword(String password) {
         this.password = password;
         return this;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }
